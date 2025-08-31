@@ -1,0 +1,452 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Georgia", serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(135deg, #fff8f0 0%, #fef5e7 100%);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+  margin-bottom: 40px;
+}
+
+.invitation-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInLeft 1s ease-out 0.2s forwards;
+}
+
+.invitation-card img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.invitation-card img:hover {
+  transform: scale(1.02);
+}
+
+.rsvp-section {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 2px solid #f0c674;
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInRight 1s ease-out 0.4s forwards;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes confetti {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) rotate(360deg);
+  }
+}
+
+.rsvp-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #d4af37;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.form-group:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.form-group:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.form-group:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+.form-group:nth-child(5) {
+  animation-delay: 1.4s;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #8b4513;
+  font-size: 1rem;
+}
+
+.attendance-options {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.attendance-option {
+  flex: 1;
+  position: relative;
+}
+
+.attendance-option input[type="radio"] {
+  display: none;
+}
+
+.attendance-option label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 20px;
+  background: #f8f8f8;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.button-text {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.button-icon {
+  font-weight: bold;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+/* Default border colors for each option */
+.attendance-option:nth-child(1) label {
+  border-color: #27ae60;
+  /* Green border for Yes */
+}
+
+.attendance-option:nth-child(2) label {
+  border-color: #f39c12;
+  /* Orange border for Maybe */
+}
+
+.attendance-option:nth-child(3) label {
+  border-color: #e74c3c;
+  /* Red border for No */
+}
+
+/* Selected state styles */
+.attendance-option:nth-child(1) input[type="radio"]:checked + label {
+  background: #27ae60;
+  /* Green background for Yes */
+  border-color: #27ae60;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+}
+
+.attendance-option:nth-child(2) input[type="radio"]:checked + label {
+  background: #f39c12;
+  /* Orange background for Maybe */
+  border-color: #f39c12;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+}
+
+.attendance-option:nth-child(3) input[type="radio"]:checked + label {
+  background: #e74c3c;
+  /* Red background for No */
+  border-color: #e74c3c;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* Hover effects for each option */
+.attendance-option:nth-child(1) label:hover {
+  background: rgba(39, 174, 96, 0.1);
+  border-color: #27ae60;
+}
+
+.attendance-option:nth-child(2) label:hover {
+  background: rgba(243, 156, 18, 0.1);
+  border-color: #f39c12;
+}
+
+.attendance-option:nth-child(3) label:hover {
+  background: rgba(231, 76, 60, 0.1);
+  border-color: #e74c3c;
+}
+
+.form-input {
+  width: 100%;
+  padding: 7px 10px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 1rem;
+  background: #fafafa;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #d4af37;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.required {
+  color: #e74c3c;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #d4af37, #f0c674);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 1.6s forwards;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #b8941f, #d4af37);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn.submitting {
+  animation: pulse 1s infinite;
+}
+
+.success-animation {
+  animation: bounce 0.6s ease-out;
+}
+
+.location-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #d4af37;
+  margin-top: 30px;
+}
+
+.location-title {
+  font-size: 1.4rem;
+  color: #d4af37;
+  font-weight: bold;
+}
+
+.location-details {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.location-details strong {
+  color: #8b4513;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.maps-link {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.maps-link:hover {
+  transform: translateY(-2px);
+}
+
+.confirmation-message {
+  background: linear-gradient(135deg, #27ae60, #2ecc71) !important;
+  color: white !important;
+  padding: 30px !important;
+  border-radius: 15px !important;
+  text-align: center !important;
+  font-size: 1.1rem !important;
+  font-weight: bold !important;
+  margin-top: 20px !important;
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3) !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 9999 !important;
+  width: 100% !important;
+  height: auto !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.confirmation-message.show {
+  display: block !important;
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  animation: successPop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.loading {
+  display: none;
+  text-align: center;
+  color: #d4af37;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .rsvp-section {
+    padding: 25px;
+  }
+
+  .rsvp-title {
+    font-size: 2rem;
+  }
+
+  .attendance-options {
+    gap: 10px;
+  }
+
+  .location-card {
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .location-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rsvp-title {
+    font-size: 1.8rem;
+  }
+
+  .form-input,
+  .submit-btn {
+    padding: 12px 15px;
+  }
+
+  .location-details {
+    font-size: 1rem;
+  }
+}
